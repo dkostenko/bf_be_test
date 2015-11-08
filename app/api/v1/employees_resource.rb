@@ -21,5 +21,10 @@ class V1::EmployeesResource < V1
         error_422! @employee.errors
       end
     end
+
+    # desc 'Employee show'
+    get ':id', :jbuilder => 'employees/show.json' do
+      @employee = Employee.find(params[:id])
+    end
   end
 end

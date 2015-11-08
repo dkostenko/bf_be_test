@@ -21,5 +21,10 @@ class V1::VacanciesResource < V1
         error_422! @vacancy.errors
       end
     end
+    
+    # desc 'Vacancy show'
+    get ':id', :jbuilder => 'vacancies/show.json' do
+      @vacancy = Vacancy.find(params[:id])
+    end
   end
 end

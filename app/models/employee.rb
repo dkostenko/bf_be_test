@@ -2,7 +2,8 @@ class Employee < ActiveRecord::Base
   include Skillable
   include EmailRegex
   
-  attr_accessible :name
+  attr_accessible :name, :email, :phone, :status, :salary
+  
   
   # #############################################################
   # Associations
