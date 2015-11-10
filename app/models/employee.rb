@@ -20,6 +20,11 @@ class Employee < ActiveRecord::Base
   validate :presence_of_phone_or_email
   
   # #############################################################
+  # Scopes
+  
+  scope :actively_seeking, -> { where(:status => true) }
+  
+  # #############################################################
   # Instance methods
   
   protected
