@@ -4,11 +4,14 @@ class Employee < ActiveRecord::Base
   
   attr_accessible :name, :email, :phone, :status, :salary
   
-  
   # #############################################################
   # Associations
-  
-  has_many :skill_vacancies, :through => :skills, :source => :vacancies
+
+  has_many :skill_vacancies, :through => :skills, :source => :vacancies do
+    def full_match
+      self.select{|vacancy| vacancy.skill_ids.sort == proxy_association.owner.skill_ids.sort }
+    end
+  end
   
   # #############################################################
   # Validations

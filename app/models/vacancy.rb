@@ -6,7 +6,11 @@ class Vacancy < ActiveRecord::Base
   # #############################################################
   # Associations
   
-  has_many :skill_employees, :through => :skills, :source => :employees
+  has_many :skill_employees, :through => :skills, :source => :employees do
+    def full_match
+      self.select{|employee| employee.skill_ids.sort == proxy_association.owner.skill_ids.sort }
+    end
+  end
   
   # #############################################################
   # Validations

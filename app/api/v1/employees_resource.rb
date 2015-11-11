@@ -73,7 +73,12 @@ class V1::EmployeesResource < V1
       # desc 'Vacancies for employee retreaving.'
       get '/', :jbuilder => 'employees/vacancies/index.json' do
         @employee = Employee.find(params[:id])
-        @vacancies = @employee.skill_vacancies.available.uniq
+        
+        if params[:full_match] == 'true'
+          @vacancies = @employee.skill_vacancies.available.full_match.uniq
+        else
+          @vacancies = @employee.skill_vacancies.available.uniq
+        end
       end
     end
   end
