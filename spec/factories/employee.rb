@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :employee do
-    name { "раз два три" }
+    name    { "раз два три" }
+    email   { Faker::Internet.safe_email}
   end
 end

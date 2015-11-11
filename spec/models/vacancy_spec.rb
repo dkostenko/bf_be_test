@@ -14,6 +14,6 @@ RSpec.describe Vacancy, :type => :model do
     it { expect(vacancy).to validate_presence_of(:contacts) }
     it { expect(vacancy).to validate_length_of(:contacts).is_at_most(255) }
     
-    it { expect(task).to validate_numericality_of(:salary).is_greater_than_or_equal_to(0).is_less_than_or_equal_to(2147483647).only_integer }
+    it { expect(vacancy).to validate_numericality_of(:salary).is_greater_than_or_equal_to(0).is_less_than_or_equal_to(2147483647).only_integer }
   end
 end

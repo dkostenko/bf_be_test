@@ -2,6 +2,8 @@
 
 FactoryGirl.define do
   factory :vacancy do
-    title { Faker::Lorem.characters(20) }
+    title       { Faker::Lorem.characters(20) }
+    contacts    { Faker::Lorem.characters(20) }
+    salary      { 0 }
   end
 end
